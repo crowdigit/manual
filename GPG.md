@@ -21,8 +21,11 @@ Per [SE](https://askubuntu.com/a/32488), [SE](https://superuser.com/q/1577858)
 1. Via file
 
    ```bash
+   # local machine
    gpg --export-secret-subkey SUBKEYID -a > secretsubkey.asc
+   # remote machine
    gpg --import secretsubkey.asc
+   rm ./secretsubkey.asc
    ```
 
 2. Via SSH
@@ -30,6 +33,8 @@ Per [SE](https://askubuntu.com/a/32488), [SE](https://superuser.com/q/1577858)
    ```bash
    gpg --export-secret-subkey SUBKEYID -a | ssh othermachine gpg --import -
    ```
+   
+   However, piping through SSH seem to not work. Use file method if it does not work.
 
 ## Sharing Public Subkeys
 
