@@ -48,6 +48,13 @@ git config --global user.signingkey SUBKEYID
 git config --global commit.gpgsign true
 ```
 
+## Importing Github Webflow GPG Key
+
+```bash
+wget https://github.com/web-flow.gpg
+gpg --import ./web-flow.gpg
+```
+
 ## Troubleshooting
 
 ### *Inappropriate ioctl for device*
