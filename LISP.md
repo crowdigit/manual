@@ -4,6 +4,13 @@
 
 [See link](https://lispcookbook.github.io/cl-cookbook/systems.html)
 
+After setting up project, add symlink to linkfarm
+
+```bash
+cd ~/common-lisp
+ln -s "${project_dir}"
+```
+
 ## Setting up test
 
 [Cookbook](https://lispcookbook.github.io/cl-cookbook/testing.html) seems outdated
@@ -32,14 +39,15 @@ Define system (`.asd`)
 ### 2. Add test runner script
 
 ```lisp
+; /test.lisp
 (require :sb-cover)
 
 (declaim (optimize sb-cover:store-coverage-data))
 ; list packages to generate coverage data
-(asdf:oos 'asdf:load-op :cookbook :force t)
+(asdf:oos 'asdf:load-op :foo :force t)
 (declaim (optimize (sb-cover:store-coverage-data 0)))
 
-(asdf:test-system :cookbook)
+(asdf:test-system :foo)
 (sb-cover:report "coverage/")
 ```
 
